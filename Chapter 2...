@@ -1,0 +1,23 @@
+[[CMOS Design Chapter 2]]
+# N-well resistor continued
+- We use *n+* and *p+* implants to increase the threshold voltage of the field devices
+- The sheet resistance of the n-well is measured with the field implant in place
+![[Pasted image 20260420151814.png]]
+## N-well Diode
+- Placing an n-well in the p-substrate forms a diode 
+   - The DC characteristics of the diode are given by
+     - $I_{D} = I_{S}(e^{\frac{Vd}{nV_{T}}}-1)$
+- The scale current is related in SPICE by an area factor
+### Well process problems
+-  When implanting the n-well for an n-well process
+   the substrate must be *counter-doped*
+- Meaning that the p-substrate must have n-type dopants added until its concentration changes from p-type to n-type
+ - The problem with counter-doping is the p-substrate acceptor atoms becomes ionized (*electrons fall out of holes*)
+- This increases scattering and reduces mobility 
+
+- A PMOS device fabricated in an n-well is slower than a PMOS device in a p-well process
+#### The Fix $\uparrow$ (*Twin Well Process*)
+- In order to reduce excessive doping effects
+   - Using a lighter doped substrate the amount of counter doping is reduced
+- Note that an intrinsic silicon substrate isn't used in order to control the doping at such low levels
+   
