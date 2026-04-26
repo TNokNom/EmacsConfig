@@ -1,0 +1,249 @@
+
+## Energy Bands in Semiconductors
+- **Valence Band ($E_v$)**
+    - Occupied by electrons bound to atoms
+- **Conduction Band ($E_c$)**
+    - Electrons here are free to move → conduction
+- **Bandgap ($E_g$)**
+    - No allowed energy states between $E_v$ and $E_c$
+### At Absolute Zero
+- All electrons occupy the valence band
+- Conduction band is empty
+### At Higher Temperature
+
+- Thermal energy excites some electrons:
+
+Electron: Ev→Ec\text{Electron: } E_v \rightarrow E_cElectron: Ev​→Ec​
+
+- Leaves behind a **hole** in the valence band
+
+---
+
+## Electrons and Holes
+
+- **Electron in conduction band**:
+    - High mobility
+    - Weakly bound to lattice
+- **Hole in valence band**:
+    - Represents a missing electron
+    - Moves as nearby electrons fill the vacancy
+    - Lower mobility than electrons
+> Increasing either electrons or holes increases conductivity.
+
+---
+
+## Carrier Generation and Recombination
+- **Generation**:
+    - Electron gains enough energy to cross the bandgap
+- **Recombination**:
+    - Electron falls back into valence band and fills a hole
+- **Carrier Lifetime ($\tau_r$)**:
+    - Average time an electron remains in conduction band
+
+---
+
+## Intrinsic Silicon
+
+- **Intrinsic carrier concentration**:
+
+$ni≈14.5×109 carriers/cm3 \ n_i \approx 14.5 \times 10^9 \ \text{carriers/cm}^3ni​≈14.5×109 carriers/cm3$
+
+- In intrinsic material:
+n=p=nin = p = n_in=p=ni​
+
+- Silicon atom density:
+
+$NSi≈50×1021 atoms/cm3N_{Si} \approx 50 \times 10^{21} \ \text{atoms/cm}^3NSi​≈50×1021 atoms/cm3$
+
+➡️ Roughly **1 electron–hole pair per $10^{12}$ silicon atoms**
+
+---
+
+# Doping and Extrinsic Semiconductors
+
+---
+
+## n‑Type Semiconductor (Donor Doping)
+
+- Dopant: **Group V elements** (e.g., Phosphorus)
+- Adds extra free electrons
+
+If:
+
+NSi≫ND≫niN_{Si} \gg N_D \gg n_iNSi​≫ND​≫ni​
+
+Then:
+
+n≈NDn \approx N_Dn≈ND​
+
+- Majority carriers: **Electrons**
+- Minority carriers: **Holes**
+
+---
+
+## p‑Type Semiconductor (Acceptor Doping)
+
+- Dopant: **Group III elements** (e.g., Boron)
+- Creates holes in valence band
+
+If:
+
+NSi≫NA≫niN_{Si} \gg N_A \gg n_iNSi​≫NA​≫ni​
+
+Then:
+
+p≈NAp \approx N_Ap≈NA​
+
+- Majority carriers: **Holes**
+- Minority carriers: **Electrons**
+
+---
+
+## # Mass‑Action Law
+
+For non‑degenerate silicon:
+
+pn=ni2pn = n_i^2pn=ni2​
+
+- Increasing electrons reduces holes
+- Increasing holes reduces electrons
+
+---
+
+## # Degenerate Semiconductors
+
+- Occur when:
+
+ND or NA∼NSiN_D \text{ or } N_A \sim N_{Si}ND​ or NA​∼NSi​
+
+- Material no longer behaves like pure silicon
+- Mass‑action law and standard equations no longer apply
+
+---
+
+## # Fermi Energy Level ($E_F$)
+
+- Energy at which probability of electron occupancy is 50%
+
+---
+
+## ## Intrinsic Silicon
+
+- Fermi level near middle of bandgap:
+
+EF≈EiE_F \approx E_iEF​≈Ei​
+
+---
+
+## ## p‑Type Silicon
+
+- Fermi level shifts toward valence band:
+
+Ei−EFp=kTln⁡ ⁣(NAni)E_i - E_{Fp} = kT \ln\!\left(\frac{N_A}{n_i}\right)Ei​−EFp​=kTln(ni​NA​​)
+
+---
+
+## ## n‑Type Silicon
+
+- Fermi level shifts toward conduction band:
+
+EFn−Ei=kTln⁡ ⁣(NDni)E_{Fn} - E_i = kT \ln\!\left(\frac{N_D}{n_i}\right)EFn​−Ei​=kTln(ni​ND​​)
+
+---
+
+## # PN Junction (Diode)
+
+- Formed by joining p‑type and n‑type regions
+- At equilibrium:
+    - **Single constant Fermi level**
+    - Built‑in electric field forms depletion region
+
+---
+
+## ## Built‑In Potential ($V_{bi}$)
+
+- Barrier voltage preventing further diffusion:
+
+Vbi=kTqln⁡ ⁣(NANDni2)V_{bi} = \frac{kT}{q} \ln\!\left(\frac{N_A N_D}{n_i^2}\right)Vbi​=qkT​ln(ni2​NA​ND​​)
+
+---
+
+## ## Forward Bias
+
+- External voltage reduces barrier
+- Conduction band edges move closer
+- Significant current flows when:
+
+Vapplied≈VbiV_{applied} \approx V_{bi}Vapplied​≈Vbi​
+
+---
+
+# Bipolar Junction Transistors (BJT)
+
+---
+
+## # NPN Transistor
+
+### Structure
+
+```
+N (Emitter) | P (Base) | N (Collector)
+```
+
+### Operation
+
+- Electrons injected from emitter into base
+    
+- Thin base → minimal recombination
+    
+- Reverse‑biased base–collector junction sweeps electrons into collector
+    
+- **Major carriers**: Electrons
+    
+- **Electron flow**: E → B → C
+    
+- **Conventional current**: C → E
+    
+
+---
+
+## # PNP Transistor
+
+### Structure
+
+```
+P (Emitter) | N (Base) | P (Collector)
+```
+
+### Operation
+
+- Holes injected from emitter into base
+    
+- Reverse‑biased base–collector junction pulls holes into collector
+    
+- **Major carriers**: Holes
+    
+- **Hole flow**: E → B → C
+    
+- **Conventional current**: E → C
+    
+
+---
+
+## # Important Mobility Insight
+
+- Electron mobility {{responseHTML}}gt;$ Hole mobility
+- Consequences:
+    - NMOS devices smaller than PMOS
+    - NPN transistors faster than PNP
+
+---
+
+## # Key Takeaways
+
+- Electron excitation creates both electrons and holes
+- Holes act as positive charge carriers
+- Doping controls carrier concentration
+- PN junctions create built‑in fields
+- BJTs rely on carrier injection and controlled recombination
+-
