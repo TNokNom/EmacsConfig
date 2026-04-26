@@ -1,0 +1,145 @@
+# Note 
+- Comeback to 3.2.2
+- Page 102
+# Background
+- In CMOS processes there are two layers of metal
+- These metals are called metal1 and metal2
+- They are both either copper or aluminum
+![[Pasted image 20260422145123.png]]
+## Fox
+- FOX provides electrical isolation between different components on the wafer
+- Helps to prevent interference or leakage current
+## Bonding Pads
+- The bonding pad is the interface between the die and the package (Inputs and Outputs)
+- There is one side of the wire soldered to the pad
+  While the other is connected to the lead frame
+# MOSIS 
+- The basic size of the pad specified by MOSIS is
+ a square 100 $\mu m \times 100 \space \mu m$
+- If u wanted a probe pad(used at microprobe stations for testing) 
+  it should be $\gt 6\mu m \times 6\mu m$
+- Pads don't scale with process dimensions
+## Passivation $\uparrow$
+- Since an insulator is covering the pad in the above figure above
+- There's no way to bond a wire to it
+- This top layer insulator is called passivation
+  - It helps protect the chip from contamination
+- There are openings (*cuts in the passivation*) 
+- In order to place/specify these openings we use and overglass layer
+- The MOSIS rules specify 6 um distance between the edge of the metal2 and the overglass box
+## Pad Layer
+-  Has no fabrication significance 
+- But is used to help machines indicate the location of the pads
+- Typically (at least for this book) no need to use
+- It's assumed where u placed your glass the pad also goes too
+# Metal1 And Via1
+
+- Metal1 is the layer found  below metal2
+- Via layers connect each metal layer
+- A via layer specifies that the insulator be removed in location placed
+![[Pasted image 20260421150704.png]]
+## Parasitic
+- Metal layers often create parasitic capacitances and resistances
+- Metal layers are characterized by a sheet resistance
+   its to be noted that its lower than that of the n-well
+- In this book we use a sheet resistance for metal 
+   that is $0.1 \ohm /square$
+### Example
+*Problem*: Estimate the resistance of a piece of metal1 1mm long and 200 nm wide 
+*Answer*: $R =\frac{{1 \times 10^-3}}{200 \times 10^-9} \cdot \frac{0.1\ohm}{square} = 500 \ohm$
+#### Calculating Capacitance
+![[Pasted image 20260422101159.png]]
+![[Pasted image 20260422105203.png]]
+##### Bottom zero bias capacitance
+- $C_{jOb} = (\frac{capacitance}{area}) \cdot (scale)^2 \cdot (bottom \space area)$
+##### Sidewall zero-bias depletion capacitance
+- $C_{jOs} = (\frac{capacitance}{area}) \cdot (depth \space of \space the \space well) \cdot (perimeter \ of \ the \ well) \cdot (scale)^2$
+
+##### Other
+- Depletion Capacitance
+is modeled with $C_{j} = \frac{C_{jo}}{\left[ 1-\left( \frac{V_{D}}{V_{bi}} \right) \right]^m}$
+- With $C_{jo}$ being zero-bias capacitance of the pn junction
+   - When the voltage across the diode is zero
+- $V_D$ is the voltage across the diode
+- $m$ is the grading coefficient(*showing how the silicon changes from n- to p-type*)
+- $V_{bi}$ is the built-in potential
+## Intrinsic Propagation Delay
+*Example Pasted Later*
+# !COMEBACK!
+
+## Current AND METAL
+- Aims to answer how much or how little current can we carry through a metal given the width and length
+- A conductor carrying too much current causes electromigration
+   - This effect can cause the conductor dimensions to change
+     - Eventually leading to higher resistance and  eventually failure 
+- For *aluminum* this threshold is $J_{Al} \rightarrow 2 \frac{mA}{\mu m}$
+### Example
+```
+Example 3.6 Assuming a scale factor of 50 nm, estimate the maximum current a piece of metal 1 with a drawn width of 3 can carry. Also estimate the maximum current a 100 by 100 um2 bonding pad can receive from a bonding wire. Assume that the metal wires are fabricated in aluminum.
+
+```
+- Given the width of the metal1 wire is 150nm
+- Also given $J_{Al} \rightarrow 1 \ \frac{mA}{\mu m}$
+- $I_{max} = J_{AI} \cdot W = 10^-3 \cdot 0.15 = 150\mu A$
+- So the maximum current through a bonding pad is then 100 mA
+
+```
+Example 3.7 Estimate the voltage drop across the conductor discussed in the previous example when the length of the conductor is 1 cm and the current flowing in the conductor is 150uA I_max.
+```
+- Remember the sheet resistance of metal1 is $0.1 \frac{\ohm}{square}$
+- *Ans*: $V_{drop} = \left( 0.1 \frac{\ohm}{square} \right) \cdot \frac{10,000}{0.15} \cdot 150 \mu A = 1 V$
+- This voltage drop is quite significant if it were to be used for power we would increase the width
+- It's to be noted that higher levels of metal should be used for  power routing
+- So metal3 is thicker than metal2, etc.
+- For routing purposes, the more metal used is usually better and the less problems you'll encounter
+- If possible a ground plane should be used across the entire die(*entire levels of metal are used for VDD and Ground*)
+### Design Rules For Metal
+- The design rules for the metal1, via1, and metal2 layers are seen below
+![[Pasted image 20260422154151.png]]
+- via1 size must be exactly 1.5 by 1.5
+- The minimum spacing between two wires using metal1
+is 1.5
+- While the spacing between wires using metal2 is 2
+- There is no spacing rule between metal1 and metal2 because they're isolated by an insulator
+    - Called a *interlayer dielectric* (*ILD*)
+#### Shortcut
+- Three boxes are included
+   - via1 box that is 1.5, a metal1 box 2.5 by 2.5
+       and a metal2 box directly placed on the metal 1 
+         box that is 2.5 by 2.5
+### Contact resistance
+- Anytime a contact with metal is invoked 
+   - we also get an inherent resistance with it ( for purposes of this book we use $10 \ohm /contact$ )
+    - We can increases the number of vias in order to avoid the 100 $\mu$A of current flowing through a single via  
+	   - This also further decreases the voltage drop and in turn the electromigration effects
+## Crosstalk/Ground Bounce 
+- Crosstalk is just unwanted interference from two conductors
+  - Crosstalk is only a problem for time-varying signals
+  - When there is two conductors something called mutual capacitance and inductance is induced 
+- Ground bounce describes local variations in the power and ground supplies at a circuit
+  - Ground bounce can be applied to both time varying signals and dc signals 
+![[Pasted image 20260424122016.png]]
+### How to determine $C_m$
+- We can determine $C_m$ by applying a step voltage to one conductor while measuring the coupled voltage on the adjacent conductor
+   - Using that we can write $\triangle V = V_{A} \cdot \frac{C_{m}}{C_{m} + C_{1sub}}$
+- $C_{1sub}$ is the capacitance of the adjacent conductor (*metal1 to ground(substrate)*)
++ Remember these lines also exhibit a mutual inductance
+   - Current flowing through one induces a voltage on the other 
+     - It can be measured by running a current through one inductor and measuring the voltage on the other 
+	     - It is measured using $V_m = L_m \frac{dI_{A}}{dt}$
+- $I_A$ is the injected (*time varying*) current 
+- $V_m$ is the induced voltage 
+- Crosstalk can be reduced by increasing distance 
+  - Sometimes the designer has no control over this
+    - In that case we balance the signals on adjacent conductors
+### Ground Bounce
+#### DC Problem
+```
+Consider the schematic seen in Fig. 3.17a. In this schematic a circuit is connected to VDD and ground through two wires measuring 10,000  um (10 mm) by 150 nm (with a resistance of 6.67 k OHMs). Next consider, in (b), what happens if the circuit starts to pull a DC current of 50 uA. Instead of the circuit being connected to a VDD of 1 V the actual VDD drops to 667 mV. Further, the actual "ground" connected to the circuit increases to 333 mV. The voltage dropped across the circuit is the difference between the applied VDD and ground or only 333 mV (considerably less than the ideal 1 V). The obvious solution to making the supplied VDD and ground move closer to the ideal values is to increase the widths of the conductors supplying and returning currents to the circuit. This reduces the series resistance. The key point here is that VDD and ground are not fixed values; rather, they can vary depending how the circuit is laid out.
+```
+![[Pasted image 20260424153921.png]]
+#### AC Problems
+```
+It is common, in CMOS circuit design, for a CMOS circuit to draw practically zero current in a static state (not doing anything). This is why, for example, it's possible to use solar power in a CMOS-based calculator. In this situation, conductors with small widths, as those in Fig. 3.17, may be fine. However, consider what happens if the circuit, for a short time, pulls 50 (xA. As discussed above, the ground bounces up and VDD droops
+down during this short time. The average current supplied by VDD may be well under a microamp; however, the occasional need for 50 uA still creates or causes problems. To circumvent these, consider adding an on-chip decoupling capacitor physically at the circuit between VDD and ground (see dotted lines in Fig. 3.17b). The added capacitor supplies the needed charge during the transient times and keeps the voltage applied across the circuit at VDD. Note that a decoupling capacitor should be used external to the chip as well. The capacitor is placed across the VDD and ground pins of the chip.
+```
