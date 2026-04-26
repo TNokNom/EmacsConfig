@@ -1,0 +1,104 @@
+# Background
+- Silicon wafers are typically doped to either be a 
+   p-type wafer or a n-type wafer
+- In CMOS IC processing the wafer is typically doped
+    to be p-type
+- When the wafer is p-type, NMOS are fabricated directly 
+   in the p-type wafer 
+   - And the PMOS, are fabricated in an n-well
+      - referred to as the bulk/body of the MOSFET
+	- Most processes use an *n-well process* 
+	  - So a p-type substrate with n-well
+# Epilayer
+
+# The Well
+- The Well is the first layer fabricated when making CMOS ICs 
+- When using the n-well in a p-substrate the two form a diode 
+   - This is okay because the substrate is usually tied to ground/lowest voltage in the circuit
+      - This is to stop the diode from forward biasing
++ The n-well can also be used as a resistor 
+![[Pasted image 20260418082430.png]]
+## Patterning 
+- We build together CMOS circuits by patterning different layers on and in the wafer 
+  - We start off with the bare wafer (p-type or n-type)
+   - We then grow an oxide layer(glass or $SiO_2$)
+     - And on top of that we add our Photo-resist Oxide layer
+- Lastly our mask is placed in front of a UV light to 
+leaving us with our exposed photo resist
+- We then etch the oxide layer to expose the wafer
+- We then remove the remaining photo resist
+### How we grow the oxide layer 
+- The first step as stated above is growing the oxide layer ($SiO_{2} \rightarrow Si+O_{2}$)
+  * This layer doesn't have to be an oxide it just has to be a really good insulator like glass
++ Exposing the wafer to air using the equation above 
+ does give us the reaction needed for this layer, but it's not enough control to give us the thickness and purity needed 
+#### Wet Oxide
+- A Wet oxide is is created using $H_{2}O$
++ Wet Oxides main benefit is the fast growing time
++ Its drawback is the hydrogen byproduct
+ + And its not as pure as the dry oxide
+
+##### Both
++ Both are known as thermal oxides due to the increased temp used during oxide growth
++ The growth rate increases with temperature
++ Any type of oxide growth in this process consumes silicon
+   - This overall thickness of the oxide is related to the thickness of the consumed silicon 
+       - Which is given by
+     $x_{si} = 0.45 \cdot x_{ox}$
+![[Pasted image 20260418092154.png]]
+#### Dry Oxide
+- A Dry Oxide is created using $O_{2}$
++ Dry Oxide takes a much longer time to grow 
+### Photoresist
+- To sum it up there are two types of photo resist 
+  - Positive resist which allows us to use a mask to remove illuminated areas 
+     - Negative resist which allows us to use a mask to remove areas that were not exposed to light
+- Using both types of resist allows the process designer 
+to cut down on the number of masks needed to define a pattern
+### N-well Creation
+- N-well creation starts by diffusing donor atoms
+  - those with five valence electrons (four in silicon)
+- The process starts by depositing a layer of resist(without oxide) directly onto the wafer
+- We then expose the resist to light through a mask to remove it 
+- We then expose the wafer to donor atoms 
+   - the resist blocks the diffusion in areas we don't want diffusion to occur in 
+- The areas that are exposed start to create an n-well
+  - We control the depth of the n-well by increasing the time under diffusion
+- Lastly the resist is finally removed 
+  #### Note
+  - The final n-well size is not the same as the mask size
+   - Foundry's may bloat or shrink the mask to compensate for lateral diffusion
+
+#### N-well as resistor
+- We can use n-wells to create resistors
+   - Using the fact that the resistance of a material is 
+   a function of the material's resistivity and the material's dimensions
+- Given by $R=\frac{\rho}{t} \cdot \frac{L\cdot scale}{w\cdot scale} =\frac{\rho}{t}\cdot \frac{L}{w}$
+- In semiconductor processing, all of the fabricated thicknesses *t* are fixed in depth 
+   - We only have control over *W* and *L*
+   -  So the equation above becomes
+   ![[Pasted image 20260420120649.png]]
+#### What is Scale Factor/N-well Math
+- Since we don't draw our layouts in nanometers or whatever the unit length of the components we're working with
+- We instead draw everything in units of a basic scale factor often called $\lambda$ 
+- It works as conversion ruler between the layout units 
+ and the real physical units on the silicon
+##### Example
+- If a minimum device dimensions are 50 nm
+  - Then 1 layout unit = 50 *nm*
+   - So 50 *nm* = $0.005 \space \mu m$
+   - $0.05 \space \mu m$ = 500 *nm*
+ - Then an n-well box drawn 10 by 10 means
+    -  Width = 10 layout units 
+	- Height = 10 layout units
+	   - Each layout unit = 50 nm
+- Giving us the actually fabricated size as 
+ - 500 *nm* * 500 *nm* = $0.5 \space \mu \cdot 0.5 \mu m$
+
+### DRC 
+- For design we set DRC checks 
+  - The minimum size (width or length ) of any n-well
+- We do this to avoid any unwanted behavior like 
+   parasitic transistors or diodes 
+   ![[Pasted image 20260420114932.png]]
+   
